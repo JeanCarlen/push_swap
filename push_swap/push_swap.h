@@ -3,35 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:25 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/03/31 14:15:51 by jcarlen          ###   ########.fr       */
+/*   Updated: 2022/04/04 14:55:46 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# define PS_BUFFSIZE 10
 
 # include "libft/libft.h"
 
-typedef struct s_data
+typedef struct	s_pusw
 {
-	t_state		*stack;
-}				t_data;
-
-typedef struct s_stack
-{
-	int			*array;
-	int			size;
-}				t_stack;
-
-typedef struct s_state
-{
-	t_stack		*stack_a;
-	t_stack		*stack_b;
-}				t_state;
-
+	int		*stack_a;
+	int		len_a;
+	int		*stack_b;
+	int		len_b;
+	int		pivot;
+	int		max;
+	int		max_n;
+	int		ps_count;
+    char	ps_buff[PS_BUFFSIZE];
+}                   t_pusw;
 
 int		push_swap(int ac, char **av);
 
@@ -54,7 +50,7 @@ int		rr();//ra and rb at the same time
 int		rra();//Shift down all elements of stack a by 1.The first element becomes the last one
 int		rrb();//Shift down all elements of stack b by 1..The first element becomes the last one
 int		rrr();//rra and rrb at the same time.
-int 	init(); //mettre l'argv dans une liste chainée et creer le pointeur de la list b
+static t_pusw	*ps_struct_init(int argc, char **argv); //mettre l'argv dans une liste chainée et creer le pointeur de la list b
 
 
 #endif

@@ -1,23 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 11:33:16 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/03/31 15:02:23 by jcarlen          ###   ########.fr       */
+/*   Created: 2022/03/29 14:18:08 by jcarlen           #+#    #+#             */
+/*   Updated: 2022/03/29 14:18:08 by jcarlen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int main(int ac, char **av)
-{
-	init();
-	while(!check_if_sorted)
-		find_length;
-		small_sort/big_sort;
-	return(0);
-}
-
+int		small_sort();//sort la stack si find_length est moins que 5 
+int		big_sort();//sort la stack si find_length est + que 5
