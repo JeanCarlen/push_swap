@@ -6,63 +6,76 @@
 /*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 14:21:14 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/04/04 14:55:49 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/04/08 15:20:49 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-//fait 2 arrays de tailles similaire, l'une vide l'autre contenant l'av
-
-static t_pusw	*ps_struct_init(int argc, char **argv)
+int	set_up(int ac, int *num, t_list **stack_a, t_list **stack_b)
 {
-	t_pusw	*lst;
-	size_t	count;
+	int	i;
 
-	count = 0;
-	lst = NULL;
-	if (!(lst = (t_pusw*)malloc(sizeof(t_pusw))))
-		ps_error(lst);
-	ft_bzero(lst, sizeof(t_pusw));
-	lst->len_a = argc - 2;
-	lst->len_b = -1;
-	if (!(lst->stack_a = (int*)malloc(sizeof(int) * argc)))
-		ps_error(lst);
-	if (!(lst->stack_b = (int*)malloc(sizeof(int) * argc)))
-		ps_error(lst);
-	while (--argc > 0)
-		lst->stack_a[count++] = ft_atoi(argv[argc]);
-	return (lst);
+	i = 0;
+	while (i <= (ac - 2))
+		ft_lstadd_back(stack_a, ft_lstnew(&num[i++]));
+	if (check_if_sorted(ac, num))
+		return (0);
+	if (ac == 3)
+		ft_two_nbrs(stack_a);
+	if (ac == 4)
+		ft_three_nbrs(stack_a);
+	if (ac > 4 && ac <= 6)
+		ft_five_nbrs(stack_a, stack_b);
+	if (ac > 6)
+		ft_big_sort(stack_a, stack_b);
+	return (0);
 }
 
+int	ft_error(int *num, t_list **a)
+{
+	free(num);
+	ft_lstclear(a, del);
+	return (write(2, "Error\n", 7));
+}
 
-
-
-int	find_length(int ac, char **av)
+unsigned int	ft_check_isdigit(int ac, char **av)
 {
 	int	i;
 	int	j;
-	int	length;
 
-	i = 0;
-	length = 0;
+	i = 1;
 	while (i < ac)
 	{
 		j = 0;
 		while (av[i][j])
 		{
-			if ((!j || av[i][j - 1] == ' ') && av[i][j] != ' ')
-				length++;
-			j++;
+			if (av[i][j] == '-' && av[i][j + 1])
+			{
+				if (!ft_isdigit(av[i][j + 1]))
+					return (0);
+				j += 2;
+			}
+			else
+			{
+				if (!ft_isdigit(av[i][j]))
+					return (0);
+				j++;
+			}
 		}
 		i++;
 	}
-	return (length - 1);
+	return (1);
 }
 
-int main(int ac, char **av)
+void	check_last(t_list **last)
 {
-	printf("%d\n", find_length(ac, av));
-	return (0);
+	t_list	*temp;
+
+	temp = *last;
+	while (temp->next)
+	{
+		temp->next->previous = temp;
+		temp = temp->next;
+	}
 }
