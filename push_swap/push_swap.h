@@ -6,7 +6,7 @@
 /*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:25 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/04/08 15:20:40 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/04/12 15:29:41 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,9 @@ typedef struct s_list
 int		push_swap(int ac, char **av);
 int		check_if_sorted(int ac, int *num); // avance dans l'array et regarde si (current < next  || current->next next->next)
 int 	check_if_dup(int args, int *num);
-int		find_length(); //check la longeur de la list de chiffre
-int		small_sort();//sort la stack si find_length est moins que 5 
-int		big_sort();//sort la stack si find_length est + que 5
-void	print_move();//print dans le terminal les move effectués par le sort
-int		print_solution();
-int		get_rdm_nbr();//generateur de nombre random	||prog different||
+int     check_if_digit(int ac, char **av);
+void	two_nbrs(t_list **stack_a);
+void    three_nbrs(t_list **stack_a);
 void	check_last(t_list **last);
 void	sa(t_list **stack_a, char letter);//Swap the first 2 elements at the top of stack a
 void	sb(t_list **stack_b, char letter);//Swap the first 2 elements at the top of stack b
