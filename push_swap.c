@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:16 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/04/14 15:36:22 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/04/20 15:51:56 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,10 @@ int	main(int ac, char **av)
 	}
 	if (ac == 2)
 		c_to_i(av[1], &stack_a);
-	printf("list made\n");
+	//printf("wtf\n");
+	set_previous(&stack_a);
 	choose_sort(&stack_a, &stack_b);
-	//ft_lstclear(stack_a, del);
+//	ft_lstclear(stack_a, del);
 	print_lst(&stack_a);
 	return (0);
 }

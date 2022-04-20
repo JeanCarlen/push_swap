@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 14:18:08 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/04/14 13:57:52 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/04/20 15:51:58 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	two_nbrs(t_list **stack_a)
 	int		a;
 	int		b;
 
-	printf("start sort 2\n");
 	temp = *stack_a;
 	a = (int)temp->content;
 	b = (int)temp->next->content;
@@ -33,12 +32,10 @@ void	three_nbrs(t_list **stack_a)
 	int		b;
 	int		c;
 
-	printf("start sort 3\n");
 	temp = *stack_a;
 	a = (int)temp->content;
 	b = (int)temp->next->content;
 	c = (int)temp->next->next->content;
-	printf("content ok \n");
 	if (a < b && b > c)
 		rra(stack_a, 'a');
 	if (a < b && b > c && c > a)
@@ -48,13 +45,23 @@ void	three_nbrs(t_list **stack_a)
 	if (a > b && b > c)
 	{
 		ra(stack_a, 'a');
-		ra(stack_a, 'a');
+		sa(stack_a, 'a');
 	}
 	if (a > b && b < c && a < c)
 		sa(stack_a, 'a');
-	printf("sort done \n");
 }
-int		big_sort(void);//sort la stack si find_length est + que 5
+
+void	four_nbrs(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*ptr_min;
+
+	ptr_min = find_min(stack_a);
+	while (*stack_a != ptr_min)
+		ra(stack_a, 'a');
+	pb(stack_a, stack_b);
+	three_nbrs(stack_a);
+	pa(stack_a, stack_b);
+}
 
 int	l_no_spc(char *str)
 {
@@ -81,18 +88,19 @@ void	choose_sort(t_list **stack_a, t_list **stack_b)
 	int	size;
 
 	size = ft_lstsize(*stack_a);
-	printf("size is %d\n", size);
 	if (size == 2)
 		two_nbrs(stack_a);
-	printf("2 ok\n");
 	if (size == 3)
 		three_nbrs(stack_a);
+	if (size == 4)
+		four_nbrs(stack_a, stack_b);
+/*	if (size >= 5)
+		big_sort(stack_a, stack_b);*/
 }
 
 void	c_to_i(char	*str, t_list **stack_a)
 {
 	int		i;
-	int		j;
 	int		n;
 	char	**nbr;
 
@@ -105,4 +113,44 @@ void	c_to_i(char	*str, t_list **stack_a)
 		free(nbr[i]);
 		++i;
 	}
+}
+
+t_list	*find_max(t_list **stack)
+{
+	int		max;
+	t_list	*ptr_max;
+	t_list	*ptr;
+
+	max = MIN_INT;
+	ptr = *stack;
+	while (ptr)
+	{
+		if (ptr->content > max)
+		{
+			ptr_max = ptr;
+			max = ptr->content;
+		}
+		ptr = ptr->next;
+	}
+	return (ptr_max);
+}
+
+t_list	*find_min(t_list **stack)
+{
+	int		min;
+	t_list	*ptr_min;
+	t_list	*ptr;
+
+	min = MAX_INT;
+	ptr = *stack;
+	while (ptr)
+	{
+		if (ptr->content < min)
+		{
+			ptr_min = ptr;
+			min = ptr->content;
+		}
+		ptr = ptr->next;
+	}
+	return (ptr_min);
 }

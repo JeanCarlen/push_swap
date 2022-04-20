@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 14:21:14 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/04/14 13:17:55 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/04/20 15:51:57 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,22 @@ void	print_lst(t_list **lst)
 	while (current != NULL)
 	{
 		ft_putnbr_fd(current->content, 1);
+		write(1, " ", 1);
 		current = current->next;
+	}
+}
+
+void	set_previous(t_list **stack)
+{
+	t_list	*ptr1;
+	t_list	*ptr2;
+
+	ptr1 = *stack;
+	ptr2 = ptr1->next;
+	while (ptr2->next)
+	{
+		ptr2 = ptr1->next;
+		ptr2->previous = ptr1;
+		ptr1 = ptr1->next;
 	}
 }

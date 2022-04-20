@@ -6,13 +6,13 @@
 #    By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 11:12:30 by jcarlen           #+#    #+#              #
-#    Updated: 2022/04/13 12:01:52 by jcarlen          ###   ########.fr        #
+#    Updated: 2022/04/20 15:52:12 by jcarlen          ###   ########.ch        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -w
 
 NAME =	push_swap
 
