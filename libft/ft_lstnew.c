@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 11:01:37 by jcarlen           #+#    #+#             */
-/*   Updated: 2021/11/11 11:01:41 by jcarlen          ###   ########.fr       */
+/*   Updated: 2022/04/21 15:32:50 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"libft.h"
 
-t_list	*ft_lstnew(void *content);
+#include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int content);
+
+t_list	*ft_lstnew(int content)
 {
 	t_list	*new;
 

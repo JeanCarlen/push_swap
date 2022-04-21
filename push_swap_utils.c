@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 14:21:14 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/04/20 15:51:57 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/04/21 14:12:22 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	ft_error(t_list **a)
 {
 //	ft_lstclear(a, del);
-	return (write(2, "Error\n", 7));
+	write(2, "Error\n", 7);
+	return (0);
 }
 
 int	check_if_digit(int ac, char **av)
@@ -23,8 +24,8 @@ int	check_if_digit(int ac, char **av)
 	int	i;
 	int	j;
 
-	i = 1;
-	while (i < ac)
+	i = 0;
+	while (i < ac - 1)
 	{
 		j = 0;
 		while (av[i][j])
@@ -67,7 +68,7 @@ void	print_lst(t_list **lst)
 	while (current != NULL)
 	{
 		ft_putnbr_fd(current->content, 1);
-		write(1, " ", 1);
+		write(1, "\n", 1);
 		current = current->next;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 14:18:08 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/04/20 15:51:58 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/04/21 12:332:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,41 @@ void	four_nbrs(t_list **stack_a, t_list **stack_b)
 	t_list	*ptr_min;
 
 	ptr_min = find_min(stack_a);
+
+	if(check_sorted(stack_a))
+		return ;
 	while (*stack_a != ptr_min)
 		ra(stack_a, 'a');
 	pb(stack_a, stack_b);
 	three_nbrs(stack_a);
+	pa(stack_a, stack_b);
+}
+
+void	five_nbrs(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*ptr_min;
+	t_list	*current;
+	int		i;
+
+	ptr_min = find_min(stack_a);
+	current = *stack_a;
+	i = 0;
+	if(check_sorted(stack_a))
+		return ;
+	while (current != ptr_min)
+	{
+		current = current->next;
+		++i;
+	}
+	while (*stack_a != ptr_min)
+	{
+		if (i < 3)
+			ra(stack_a, 'a');
+		else
+			rra(stack_a, 'a');
+	}
+	pb(stack_a, stack_b);
+	four_nbrs(stack_a, stack_b);
 	pa(stack_a, stack_b);
 }
 
@@ -94,25 +125,33 @@ void	choose_sort(t_list **stack_a, t_list **stack_b)
 		three_nbrs(stack_a);
 	if (size == 4)
 		four_nbrs(stack_a, stack_b);
-/*	if (size >= 5)
-		big_sort(stack_a, stack_b);*/
+	if (size == 5)
+		five_nbrs(stack_a, stack_b);
 }
 
-void	c_to_i(char	*str, t_list **stack_a)
+int	c_to_i(char	*str, t_list **stack_a)
 {
 	int		i;
 	int		n;
+	int		size;
 	char	**nbr;
 
 	i = 0;
+	size = l_no_spc(str);
 	nbr = ft_split(str, ' ');
+	if (check_if_digit(size + 1, nbr) == 0)
+	{
+		write(1, "digit ", 6);
+		return (ft_error(stack_a));
+	}
 	while (nbr[i])
 	{
 		n = ft_atoi(nbr[i]);
-		ft_lstadd_back(stack_a, ft_lstnew((void *)n));
+		ft_lstadd_back(stack_a, ft_lstnew(n));
 		free(nbr[i]);
 		++i;
 	}
+	return (1);
 }
 
 t_list	*find_max(t_list **stack)

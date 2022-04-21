@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 11:16:00 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/04/20 15:52:00 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/04/21 11:57:476 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,43 @@ int	check_if_dup(int ac, char **av)
 			j++;
 		}
 		i++;
+	}
+	return (1);
+}
+
+int	check_sorted(t_list **stack)
+{
+	t_list	*ptr1;
+	t_list	*ptr2;
+
+	ptr1 = *stack;
+	ptr2 = ptr1->next;
+	while(ptr2)
+	{
+		if (ptr1->content > ptr2->content)
+			return (0);
+		ptr1 = ptr1->next;
+		ptr2 = ptr1->next;
+	}
+	return (1);
+}
+
+int	check_dup(t_list **stack)
+{
+	t_list	*ptr1;
+	t_list	*ptr2;
+
+	ptr1 = *stack;
+	while (ptr1)
+	{
+		ptr2 = ptr1->next;
+		while (ptr2)
+		{
+			if (ptr1->content == ptr2->content)
+				return (0);
+			ptr2 = ptr2->next;
+		}
+		ptr1 = ptr1->next;
 	}
 	return (1);
 }
