@@ -6,11 +6,11 @@
 #    By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 11:12:30 by jcarlen           #+#    #+#              #
-#    Updated: 2022/04/21 15:32:43 by jeancarlen       ###   ########.fr        #
+#    Updated: 2022/04/25 16:14:30 by jeancarlen       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+3120mvimvi        20mvi    CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra -w
 
@@ -20,7 +20,8 @@ SRCS =	push_swap.c\
 		push_swap_utils.c\
 		push_swap_sort.c\
 		push_swap_move.c\
-		push_swap_check.c
+		push_swap_check.c\
+		bug_sort.c
 
 INCLUDES = push_swap.h
 
@@ -28,10 +29,21 @@ OBJS = $(SRCS:.c=.o)
 
 LIBFT = ./libft/
 
+PARAM = "1"
+
 all : libft $(NAME)
 
 $(NAME) : $(OBJS)
 		$(CC) $(OBJS) -L$(LIBFT) -lft -o $(NAME)
+
+random: libft 
+		gcc numb_gen.c -L$(LIBFT) -lft -o random
+		@echo $(ARG)
+		@echo $(PARAM)
+
+ARG:
+	export ARG= `./random $(PARAM)`
+	@echo $(ARG)
 
 libft:
 		@ $(MAKE) bonus libft.a -C $(LIBFT)

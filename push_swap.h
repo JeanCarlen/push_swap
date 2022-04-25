@@ -15,6 +15,7 @@
 
 # include "libft/libft.h"
 # include <stdio.h>
+# include <stdlib.h>
 
 # define MIN_INT -2147483648
 # define MAX_INT 2147483647
@@ -26,12 +27,12 @@ void	two_nbrs(t_list **stack_a);
 void	three_nbrs(t_list **stack_a);
 void	four_nbrs(t_list **stack_a, t_list **stack_b);
 void	five_nbrs(t_list **stack_a, t_list **stack_b);
-//void	big_sort(t_list **stack_a, t_list **stack_b);
+void	big_sort(t_list **stack_a, t_list **stack_b);
 void	check_last(t_list **last);
 void	sa(t_list **stack_a, char letter);//Swap the first 2 elements at the top of stack a
 void	sb(t_list **stack_b, char letter);//Swap the first 2 elements at the top of stack b
 void	ss(t_list **stack_a, t_list **stack_b);//sa and sb at the same time.
-void	pa(t_list **stack_b, t_list **stack_a);//Take the first element at the top of b and put it at the top of a
+void	pa(t_list **stack_a, t_list **stack_b);//Take the first element at the top of b and put it at the top of a
 void	pb(t_list **stack_a, t_list **stack_b);//Take the first element at the top of a and put it at the top of b
 void	ra(t_list **stack_a, char letter);//Shift up all elements of stack a by 1.The first element becomes the last one
 void	rb(t_list **stack_b, char letter);//Shift up all elements of stack b by 1.The first element becomes the last one
@@ -57,5 +58,4 @@ int		check_dup(t_list **stack);
 big sort (enfer)
 regler le lst_clear
 (abomination rangement)
-fix warnings (god help us)
 */
