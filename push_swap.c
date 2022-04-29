@@ -53,9 +53,13 @@ int	main(int ac, char **av)
 		return (ft_error(&stack_a));
 	}
 	set_previous(&stack_a);
-	choose_sort(&stack_a, &stack_b);
+//	choose_sort(&stack_a, &stack_b);
 //	ft_lstclear(stack_a, del);
 //	write(1, "Stack a\n", 8);
+//	tester(&stack_a, &stack_b);
+	printf("stack_a =\n");
 	print_lst(&stack_a);
+	printf("stack_b =\n");
+	print_lst(&stack_b);
 	return (0);
 }

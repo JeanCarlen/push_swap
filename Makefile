@@ -6,11 +6,11 @@
 #    By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 11:12:30 by jcarlen           #+#    #+#              #
-#    Updated: 2022/04/25 16:14:30 by jeancarlen       ###   ########.fr        #
+#    Updated: 2022/04/29 15:56:04 by jeancarlen       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-3120mvimvi        20mvi    CC = gcc
+CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra -w
 
@@ -21,6 +21,7 @@ SRCS =	push_swap.c\
 		push_swap_sort.c\
 		push_swap_move.c\
 		push_swap_check.c\
+		find.c\
 		bug_sort.c
 
 INCLUDES = push_swap.h

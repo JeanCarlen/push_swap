@@ -20,6 +20,18 @@
 # define MIN_INT -2147483648
 # define MAX_INT 2147483647
 
+typedef struct s_place
+{
+	t_list	*top_a;
+	t_list	*top_b;
+	t_list	*bot_a;
+	t_list	*bot_b;
+	t_list	*min_b;
+	t_list	*max_a;
+	t_list	*start;
+	int		median;
+}					t_place;
+
 int		push_swap(int ac, char **av);
 int		check_if_digit(int ac, char **av);
 int		ft_error(t_list **a);
@@ -51,11 +63,26 @@ t_list	*find_max(t_list **stack);
 t_list	*find_min(t_list **stack);
 int		check_sorted(t_list **stack);
 int		check_dup(t_list **stack);
+int		median(t_list **stack_a);
+void	jifas(t_list **stack_a, t_list **stack_b);
+void	init_place(t_list **stack_a, t_list **stack_b, t_place *plc);
+t_list *compare(t_place *plc);
+void	tester(t_list **stack_a, t_list **stack_b);//a enlevé
 
 #endif
 
 /* 
-big sort (enfer)
 regler le lst_clear
-(abomination rangement)
+(abomination rangement + longueur des fonctions)
+*/
+/*
+Algo des amis
+-------------
+gerer la boucle while de l'algo jifas
+gerer le "sa" dans la boucle jifas
+tout l'algo omegalul
+créer le preneur de decision pour optiminiser (ra/rra) (gérer les rotations -> un certain pointeur)
+comparateur du nombre de move entre jifas et radix
+clean le .h
+enlever les printf(oui!même ceux en commantaire!)
 */
