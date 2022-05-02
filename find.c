@@ -73,3 +73,30 @@ int median(t_list **stack_a)
 	free(array);
 	return(i);
 }
+
+t_list *gimi_median(t_list **stack_a, int median)
+{
+	t_list *median_ptr;
+	t_list *current;
+	int		diff;
+
+	current = *stack_a;
+	diff = MAX_INT;
+	while(current)
+	{
+		if (abs(current->content - median) < diff)
+		{
+			diff = abs(current->content - median);
+			median_ptr = current;
+		}
+		current = current->next;
+	}
+	return (median_ptr);
+}
+
+int	abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
+}

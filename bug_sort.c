@@ -49,17 +49,32 @@ void	jifas(t_list **stack_a, t_list **stack_b)
 {
 	t_place	*plc;
 
+	int i = 0;
+
+
+	plc = malloc(sizeof(t_place));
+	if(!plc)
+		return;
 	plc->median = median(stack_a);
 	init_place(stack_a, stack_b, plc);
-	while()
+	rotate_to(stack_a, gimi_median(stack_a, plc->median));
+	pb(stack_a, stack_b);
+	while(!check_sorted(stack_a) && !*stack_b)
 	{
-		pb(stack_a, stack_b);
-		if (plc->top_a->content < plc->top_a->next->content)
+		init_place(stack_a, stack_b, plc);
+		if ((!(plc->top_a->content < plc->bot_b->content)) && (!(plc->top_a->content > plc->top_b->content)))
+		{
 			sa(stack_a, 'a');
-
+			init_place(stack_a, stack_b, plc);
+		}
+		rotate_to(stack_a, compare(plc));
+		pb(stack_a, stack_b);
+		init_place(stack_a, stack_b, plc);
+		if (plc->top_b->content < plc->top_b->next->content)
+			rb(stack_b, 'b');
+//		print_lst(stack_a, stack_b);
 	}
-
-
+	free(plc);
 }
 
 void init_place(t_list **stack_a, t_list **stack_b, t_place *plc)
@@ -96,7 +111,35 @@ t_list	*compare(t_place *plc)
 		diff = plc->bot_b->content - plc->bot_a->content;
 		closest = plc->bot_a;
 	}
+	plc->closest = closest;
 	return (closest);
+}
+
+void	rotate_to(t_list **stack, t_list *ptr)
+{
+	int		size;
+	int		i;
+	t_list	*top;
+	int		ra_tog;
+	
+	top = *stack;
+	size = ft_lstsize(*stack);
+	i = 0;
+	ra_tog = 0;
+	while (i <= size / 2 && top != ptr)
+	{
+		top = top->next;
+		i++;
+	}
+	if (i <= size / 2)
+		ra_tog = 1;
+	while (*stack != ptr)
+	{
+		if (ra_tog)
+			ra(stack, 'a');
+		else
+			rra(stack, 'a');
+	}
 }
 /*
 void tester(t_list **stack_a, t_list **stack_b)

@@ -30,6 +30,7 @@ typedef struct s_place
 	t_list	*max_a;
 	t_list	*start;
 	int		median;
+	t_list	*closest;
 }					t_place;
 
 int		push_swap(int ac, char **av);
@@ -56,7 +57,7 @@ int		l_no_spc(char *str);
 int	    c_to_i(char	*str, t_list **stack_a);
 void	set_up_str(t_list **stack_a, char **av);
 int		set_up_av(int ac, char **av, t_list **stack_a, t_list **stack_b);
-void	print_lst(t_list **lst);
+void	print_lst(t_list **stack_a, t_list **stack_b);
 void	choose_sort(t_list **stack_a, t_list **stack_b);
 void	set_previous(t_list **stack);
 t_list	*find_max(t_list **stack);
@@ -68,6 +69,10 @@ void	jifas(t_list **stack_a, t_list **stack_b);
 void	init_place(t_list **stack_a, t_list **stack_b, t_place *plc);
 t_list *compare(t_place *plc);
 void	tester(t_list **stack_a, t_list **stack_b);//a enlevé
+void	rotate_to(t_list **stack, t_list *ptr);
+t_list	*gimi_median(t_list **stack_a, int median);
+int		abs(int n);
+
 
 #endif
 

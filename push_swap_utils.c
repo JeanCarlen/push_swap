@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 14:21:14 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/04/21 14:12:23 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/02 14:43:13 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,27 @@ void	check_last(t_list **last)
 	}
 }
 
-void	print_lst(t_list **lst)
+void	print_lst(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*current;
+	t_list	*current_a;
+	t_list	*current_b;
 
-	current = *lst;
-	while (current != NULL)
-	{
-		ft_putnbr_fd(current->content, 1);
+	current_a = *stack_a;
+	current_b = *stack_b;
+	while (current_a != NULL || current_b != NULL)
+	{	
+		if (current_a)
+		{
+			ft_putnbr_fd(current_a->content, 1);
+			current_a = current_a->next;
+		}
+		write(1,"	",1);
+		if (current_b)
+		{
+			ft_putnbr_fd(current_b->content, 1);
+			current_b = current_b->next;
+		}
 		write(1, "\n", 1);
-		current = current->next;
 	}
 }
 
