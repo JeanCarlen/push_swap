@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 14:18:08 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/04/21 12:332:34 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/03 17:01:48 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ void	four_nbrs(t_list **stack_a, t_list **stack_b)
 	t_list	*ptr_min;
 
 	ptr_min = find_min(stack_a);
-
-	if(check_sorted(stack_a))
+	if (check_sorted(stack_a))
 		return ;
 	while (*stack_a != ptr_min)
 		ra(stack_a, 'a');
@@ -75,7 +74,7 @@ void	five_nbrs(t_list **stack_a, t_list **stack_b)
 	ptr_min = find_min(stack_a);
 	current = *stack_a;
 	i = 0;
-	if(check_sorted(stack_a))
+	if (check_sorted(stack_a))
 		return ;
 	while (current != ptr_min)
 	{
@@ -128,7 +127,7 @@ void	choose_sort(t_list **stack_a, t_list **stack_b)
 	if (size == 5)
 		five_nbrs(stack_a, stack_b);
 	if (size > 5)
-		jifas(stack_a, stack_b);
+		big_sort(stack_a, stack_b);
 }
 
 int	c_to_i(char	*str, t_list **stack_a)

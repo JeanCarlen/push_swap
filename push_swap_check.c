@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 11:16:00 by jeancarlen        #+#    #+#             */
-/*   Updated: 2022/04/21 11:57:476 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/03 17:01:56 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,11 @@ int	check_sorted(t_list **stack)
 	t_list	*ptr1;
 	t_list	*ptr2;
 
+	if (!*stack)
+		return (0);
 	ptr1 = *stack;
 	ptr2 = ptr1->next;
-	while(ptr2)
+	while (ptr2)
 	{
 		if (ptr1->content > ptr2->content)
 			return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:25 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/04/21 11:55:110 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/03 17:02:35 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	rra(t_list **stack_a, char letter);//Shift down all elements of stack a by 
 void	rrb(t_list **stack_b, char letter);//Shift down all elements of stack b by 1..The first element becomes the last one
 void	rrr(t_list **stack_a, t_list **stack_b);//rra and rrb at the same time.
 int		l_no_spc(char *str);
-int	    c_to_i(char	*str, t_list **stack_a);
+int		c_to_i(char	*str, t_list **stack_a);
 void	set_up_str(t_list **stack_a, char **av);
 int		set_up_av(int ac, char **av, t_list **stack_a, t_list **stack_b);
 void	print_lst(t_list **stack_a, t_list **stack_b);
@@ -67,15 +67,11 @@ int		check_dup(t_list **stack);
 int		median(t_list **stack_a);
 void	jifas(t_list **stack_a, t_list **stack_b);
 void	init_place(t_list **stack_a, t_list **stack_b, t_place *plc);
-t_list *compare(t_place *plc);
+t_list	*compare(t_place *plc);
 void	tester(t_list **stack_a, t_list **stack_b);//a enlevé
 void	rotate_to(t_list **stack, t_list *ptr);
 t_list	*gimi_median(t_list **stack_a, int median);
 int		abs(int n);
-int		is_empty(t_list *list);
-void	rotate_to_b(t_list **stack, t_list *ptr);
-int		solver(t_list **stack_a, t_list **stack_b, t_place *plc);
-
 
 #endif
 

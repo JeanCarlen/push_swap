@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_move.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:57:58 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/03 16:03:25 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/05/03 15:08:17 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	pa(t_list **stack_a, t_list **stack_b)
 		(*stack_a)->previous = temp_b;
 	*stack_a = temp_b;
 	ft_putstr_fd("pa\n", 1);
-	return ;
 }
 
 void	pb(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*temp_b;
 	t_list	*temp_a;
+
 	temp_b = *stack_b;
 	temp_a = *stack_a;
 	if (!stack_a)
@@ -117,9 +117,9 @@ void	ra(t_list **stack_a, char letter)
 	t_list	*second;
 
 	if (!*stack_a)
-		return;
+		return ;
 	if (!(*stack_a)->next)
-		return;
+		return ;
 	temp = *stack_a;
 	last = ft_lstlast(*stack_a);
 	second = temp->next;
