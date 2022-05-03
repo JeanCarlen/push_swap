@@ -72,6 +72,9 @@ void	tester(t_list **stack_a, t_list **stack_b);//a enlevé
 void	rotate_to(t_list **stack, t_list *ptr);
 t_list	*gimi_median(t_list **stack_a, int median);
 int		abs(int n);
+int		is_empty(t_list *list);
+void	rotate_to_b(t_list **stack, t_list *ptr);
+int		solver(t_list **stack_a, t_list **stack_b, t_place *plc);
 
 
 #endif

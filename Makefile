@@ -6,7 +6,7 @@
 #    By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 11:12:30 by jcarlen           #+#    #+#              #
-#    Updated: 2022/04/29 15:56:04 by jeancarlen       ###   ########.fr        #
+#    Updated: 2022/05/03 14:08:41 by jeancarlen       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS =	push_swap.c\
 		push_swap_move.c\
 		push_swap_check.c\
 		find.c\
+		jifas.c\
 		bug_sort.c
 
 INCLUDES = push_swap.h

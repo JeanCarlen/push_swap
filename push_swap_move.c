@@ -6,7 +6,7 @@
 /*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:57:58 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/02 10:53:13 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/05/03 16:03:25 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,12 @@ void	pb(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*temp_b;
 	t_list	*temp_a;
-
 	temp_b = *stack_b;
 	temp_a = *stack_a;
 	if (!stack_a)
 		return ;
 	*stack_a = temp_a->next;
-	if (*stack_b)
+	if (*stack_a)
 		temp_a->next->previous = NULL;
 	temp_a->next = *stack_b;
 	if (*stack_b)
@@ -117,6 +116,10 @@ void	ra(t_list **stack_a, char letter)
 	t_list	*last;
 	t_list	*second;
 
+	if (!*stack_a)
+		return;
+	if (!(*stack_a)->next)
+		return;
 	temp = *stack_a;
 	last = ft_lstlast(*stack_a);
 	second = temp->next;

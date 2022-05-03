@@ -44,7 +44,7 @@ void big_sort(t_list **stack_a, t_list **stack_b)
 /* gerer les 7premier bit, puis le neg sur le 8
 
 */
-
+/*
 void	jifas(t_list **stack_a, t_list **stack_b)
 {
 	t_place	*plc;
@@ -76,7 +76,7 @@ void	jifas(t_list **stack_a, t_list **stack_b)
 	}
 	free(plc);
 }
-
+*/
 void init_place(t_list **stack_a, t_list **stack_b, t_place *plc)
 {
 	plc->top_a = *stack_a;
