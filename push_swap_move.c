@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:57:58 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/04 10:57:09 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/05/04 16:35:44 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	rra(t_list **stack_a, char letter)
 	t_list	*last;
 
 	head = *stack_a;
+	if ((*stack_a)->next == NULL)
+		return ;
 	last = ft_lstlast(*stack_a);
 	last->previous->next = NULL;
 	head->previous = last;

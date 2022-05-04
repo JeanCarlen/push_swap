@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 14:26:17 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/04 08:43:41 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/05/04 16:35:53 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@ typedef struct s_list
 {
 	int				content;
 	int				num;
+	int				solved;
 	struct s_list	*next;
-	struct s_list	*previous;			
+	struct s_list	*previous;
 }					t_list;
 
 int		ft_isalpha(int c);

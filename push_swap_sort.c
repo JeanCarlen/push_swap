@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 14:18:08 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/04 10:56:59 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/05/04 16:34:25 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	choose_sort(t_list **stack_a, t_list **stack_b)
 	if (size == 5)
 		five_nbrs(stack_a, stack_b);
 	if (size > 5)
-		big_sort(stack_a, stack_b);
+		jifas(stack_a, stack_b);
 }
 
 int	c_to_i(char	*str, t_list **stack_a)
@@ -185,7 +185,7 @@ t_list	*find_min(t_list **stack)
 	ptr = *stack;
 	while (ptr)
 	{
-		if (ptr->content < min)
+		if (ptr->content < min && ptr->solved == 0)
 		{
 			ptr_min = ptr;
 			min = ptr->content;

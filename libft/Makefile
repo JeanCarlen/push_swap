@@ -3,14 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+         #
+#    By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 13:52:25 by jcarlen           #+#    #+#              #
-#    Updated: 2022/04/20 15:52:19 by jcarlen          ###   ########.ch        #
+#    Updated: 2022/05/04 16:35:28 by fmalizia         ###   ########.ch        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+
+CFLAGS = -Wall -Werror -Wextra -w
+
+GR = \033[32;1m
+RC = \033[0m
 
 SRCS = ft_atoi.c \
 	ft_bzero.c \
@@ -54,7 +59,12 @@ BONUS	= ft_lstsize.c ft_lstnew.c ft_lstadd_front.c ft_lstlast.c ft_lstadd_back.c
 BONUS_OBJS = $(BONUS:.c=.o)
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+		@printf "\n $(RC)"
+		@ar rcs $(NAME) $(OBJS)
+
+%.o : %.c
+		@$(CC) $(FLAGS) $< -c
+		@printf "$(GR)||"
 
 all: $(NAME)
 	@echo "$(NAME) created"
@@ -67,11 +77,12 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	@echo "NAME deleted"
+	@echo "$(NAME) deleted"
 
 re: fclean all
 
 bonus: $(OBJS) $(BONUS_OBJS)
-		ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+		@printf "\n libft=> SUCCESS\n $(RC)"
+		@ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
 .PHONY: all clean fclean retry bonus

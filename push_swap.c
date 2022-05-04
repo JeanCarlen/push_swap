@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:16 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/04 10:56:45 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/05/04 16:34:32 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ int	main(int ac, char **av)
 //	ft_lstclear(stack_a, del);
 //	write(1, "Stack a\n", 8);
 //	tester(&stack_a, &stack_b);
-//	print_lst(&stack_a, &stack_b);
+	print_lst(&stack_a, &stack_b);
 	return (0);
 }

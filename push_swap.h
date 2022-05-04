@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:25 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/04 10:56:42 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/05/04 16:34:12 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,18 @@ void	jifas(t_list **stack_a, t_list **stack_b);
 void	init_place(t_list **stack_a, t_list **stack_b, t_place *plc);
 t_list	*compare(t_place *plc);
 void	tester(t_list **stack_a, t_list **stack_b);//a enlevé
-void	rotate_to(t_list **stack, t_list *ptr);
+int		rotate_to(t_list **stack, t_list *ptr);
 t_list	*gimi_median(t_list **stack_a, int median);
 int		abs(int n);
 void	median_sort(int *array, int n);
 void	ft_range(t_list **stack_a);
 void	fill(t_list **stack, int *arr);
 void	rank(t_list **stack, int *arr);
+int		solver(t_list **stack_a, t_list **stack_b, t_place *plc);
+int		is_empty(t_list *list);
+t_list	*ft_lstlast_solved(t_list *lst);
+int		reverse_sorted(t_list **stack);
+int		check_solved(t_list **stack);
 
 #endif
 

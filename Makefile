@@ -6,7 +6,7 @@
 #    By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 11:12:30 by jcarlen           #+#    #+#              #
-#    Updated: 2022/05/04 11:00:08 by fmalizia         ###   ########.ch        #
+#    Updated: 2022/05/04 16:35:33 by fmalizia         ###   ########.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS =	push_swap.c\
 		push_swap_check.c\
 		find.c\
 		bug_sort.c\
-		radix.c
+		radix.c\
+		jifas.c\
 
 INCLUDES = push_swap.h
 
@@ -34,11 +35,13 @@ LIBFT = ./libft/
 PARAM = "1"
 
 GR = \033[32;1m
+RC = \033[0m
 
 all : libft $(NAME)
 
 $(NAME) : $(OBJS)
-		$(CC) $(OBJS) -L$(LIBFT) -lft -o $(NAME)
+		@$(CC) $(OBJS) -L$(LIBFT) -lft -o $(NAME)
+		@printf "\n push_swap=> SUCCESS\n $(RC)"
 
 random: libft 
 		gcc numb_gen.c -L$(LIBFT) -lft -o random

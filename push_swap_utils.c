@@ -6,7 +6,7 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 14:21:14 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/04 10:56:56 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/05/04 16:34:36 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,23 @@ void	print_lst(t_list **stack_a, t_list **stack_b)
 	{	
 		if (current_a)
 		{
-			ft_putnbr_fd(current_a->num, 1);
+			// ft_putnbr_fd(current_a->num, 1);
+			if (current_a->solved)
+				printf("\033[32;1m %d\033[0m", current_a->content);
+			else
+				printf("\033[32;2m %d\033[0m", current_a->content);
 			current_a = current_a->next;
 		}
-		write(1, " | ", 1);
+		printf("	");
+		//write(1, "	", 1);
 		if (current_b)
 		{
-			ft_putnbr_fd(current_b->num, 1);
+			// ft_putnbr_fd(current_b->num, 1);
+			printf("%d", current_b->content);
 			current_b = current_b->next;
 		}
-		write(1, "\n", 1);
+		printf("\n");
+		//write(1, "\n", 1);
 	}
 }
 
