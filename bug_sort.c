@@ -6,12 +6,13 @@
 /*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:57:58 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/03 15:13:27 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/05/04 10:56:36 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
 void	big_sort(t_list **stack_a, t_list **stack_b)
 {
 	int		bit;
@@ -36,10 +37,11 @@ void	big_sort(t_list **stack_a, t_list **stack_b)
 		bit++;
 	}
 }
+*/
 /* gerer les 7premier bit, puis le neg sur le 8
 
 */
-
+/*
 void	jifas(t_list **stack_a, t_list **stack_b)
 {
 	t_place	*plc;
@@ -71,7 +73,7 @@ void	jifas(t_list **stack_a, t_list **stack_b)
 	}
 	free(plc);
 }
-
+*/
 void	init_place(t_list **stack_a, t_list **stack_b, t_place *plc)
 {
 	plc->top_a = *stack_a;
