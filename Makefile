@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+         #
+#    By: mancarvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/29 11:12:30 by jcarlen           #+#    #+#              #
-#    Updated: 2022/05/04 16:35:33 by fmalizia         ###   ########.ch        #
+#    Updated: 2022/05/05 15:12:02 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra -w
+CFLAGS = -Wall -Werror -Wextra 
 
 NAME =	push_swap
 
@@ -40,7 +40,7 @@ RC = \033[0m
 all : libft $(NAME)
 
 $(NAME) : $(OBJS)
-		@$(CC) $(OBJS) -L$(LIBFT) -lft -o $(NAME)
+		@$(CC) $(OBJS) -L$(LIBFT) -lft $(CFLAGS) -o $(NAME)
 		@printf "\n push_swap=> SUCCESS\n $(RC)"
 
 random: libft 
@@ -69,9 +69,10 @@ reset: fclean
 		@ $(MAKE) fclean -C $(LIBFT)
 
 run: $(NAME)
-		./push_swap $(ARG)
-		@ echo "nombres de move"
+		@ echo "nombres de move jifas"
 		@ ./push_swap $(ARG) | wc -l
+		@ echo "nombres de move radix"
+		@ ./push_swap2 $(ARG) | wc -l
 
 re: fclean all
 

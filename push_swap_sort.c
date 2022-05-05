@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 14:18:08 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/04 16:34:25 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/05/05 15:19:29 by marvin               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,9 @@ t_list	*find_min(t_list **stack)
 
 	min = MAX_INT;
 	ptr = *stack;
+	ptr_min = *stack;
+	if (!*stack)
+		return (NULL);
 	while (ptr)
 	{
 		if (ptr->content < min && ptr->solved == 0)
