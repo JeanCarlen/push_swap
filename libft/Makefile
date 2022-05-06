@@ -6,7 +6,7 @@
 #    By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 13:52:25 by jcarlen           #+#    #+#              #
-#    Updated: 2022/05/04 16:35:28 by fmalizia         ###   ########.ch        #
+#    Updated: 2022/05/06 12:12:23 by fmalizia         ###   ########.ch        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = libft.a
 CFLAGS = -Wall -Werror -Wextra -w
 
 GR = \033[32;1m
+CY = \033[36;1m
 RC = \033[0m
 
 SRCS = ft_atoi.c \
@@ -70,19 +71,20 @@ all: $(NAME)
 	@echo "$(NAME) created"
 
 clean:
-	rm -f $(OBJS)
-	@echo "OBJS Deleted"
-	rm -f $(BONUS_OBJS)
-	@echo "Bonus Deleted"
+	@rm -f $(OBJS)
+	@rm -f $(BONUS_OBJS)
+	@ printf "$(CY)******************\n# LIBFT DELETED #\n******************\n$(RC)"
 
 fclean: clean
-	rm -f $(NAME)
-	@echo "$(NAME) deleted"
+	@rm -f $(NAME)
 
 re: fclean all
 
-bonus: $(OBJS) $(BONUS_OBJS)
-		@printf "\n libft=> SUCCESS\n $(RC)"
+bonus: start $(OBJS) $(BONUS_OBJS)
+		@printf "100%%  => SUCCESS\n$(RC)"
 		@ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
-.PHONY: all clean fclean retry bonus
+start:
+		@printf "$(GR)Compiling Libft\n"
+
+.PHONY: all clean fclean retry bonus start

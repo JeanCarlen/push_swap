@@ -35,13 +35,18 @@ LIBFT = ./libft/
 PARAM = "1"
 
 GR = \033[32;1m
+CY = \033[36;1m
 RC = \033[0m
 
-all : libft $(NAME)
+all : $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME) : libft start $(OBJS)
 		@$(CC) $(OBJS) -L$(LIBFT) -lft $(CFLAGS) -o $(NAME)
-		@printf "\n push_swap=> SUCCESS\n $(RC)"
+		@printf "100%%  => SUCCESS\n$(RC)"
+		@ printf "$(CY)**********************\n# PUSH_SWAP COMPILED #\n**********************\n$(RC)"
+
+start:
+		@printf "$(GR)Compiling Push_Swap\n"
 
 random: libft 
 		gcc numb_gen.c -L$(LIBFT) -lft -o random
@@ -53,18 +58,19 @@ ARG:
 	@echo $(ARG)
 
 libft:
-		@ $(MAKE) bonus libft.a -C $(LIBFT)
+		@ $(MAKE) bonus -C $(LIBFT)
+		@ printf "$(CY)******************\n# LIBFT COMPILED #\n******************\n$(RC)"
 
 %.o : %.c
 		@$(CC) $(FLAGS) $< -c
 		@printf "$(GR)||"
 
 clean :
-		rm -f $(OBJS)
-
+		@ rm -f $(OBJS)
+		@ printf "$(CY)******************\n# OBJECT DELETED #\n******************\n$(RC)"
 fclean : clean
-		rm -f $(NAME)
-
+		@ rm -f $(NAME)
+		@ printf "$(CY)******************\n# BINARY DELETED #\n******************\n$(RC)"
 reset: fclean 
 		@ $(MAKE) fclean -C $(LIBFT)
 
@@ -76,4 +82,4 @@ run: $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re libft reset bonus run
+.PHONY: all clean fclean re libft reset bonus run start
