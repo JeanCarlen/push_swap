@@ -127,7 +127,7 @@ void	choose_sort(t_list **stack_a, t_list **stack_b)
 	if (size == 5)
 		five_nbrs(stack_a, stack_b);
 	if (size > 5)
-		jifas(stack_a, stack_b);
+		big_sort(stack_a, stack_b);
 }
 
 int	c_to_i(char	*str, t_list **stack_a)

@@ -25,6 +25,7 @@ SRCS =	push_swap.c\
 		bug_sort.c\
 		radix.c\
 		jifas.c\
+		leacks_cheker_ex.c\
 
 INCLUDES = push_swap.h
 

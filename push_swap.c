@@ -6,11 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:16 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/05 15:12:19 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/10 14:52:1 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void check_leaks();
 
 int	set_up_av(int ac, char **av, t_list **stack_a, t_list **stack_b)
 {
@@ -26,6 +28,21 @@ int	set_up_av(int ac, char **av, t_list **stack_a, t_list **stack_b)
 		++i;
 	}
 	return (0);
+}
+
+void free_all(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*current;
+	t_list	*next;
+	
+	current = *stack_a;
+	next = current;
+	while (next)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
 }
 
 int	main(int ac, char **av)
@@ -58,5 +75,7 @@ int	main(int ac, char **av)
 //	write(1, "Stack a\n", 8);
 //	tester(&stack_a, &stack_b);
 	print_lst(&stack_a, &stack_b);
+	free_all(&stack_a, &stack_b);
+	check_leaks();
 	return (0);
 }

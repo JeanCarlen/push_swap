@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 14:21:14 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/04 16:34:36 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/05/10 14:08:48 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void	print_lst(t_list **stack_a, t_list **stack_b)
 		{
 			// ft_putnbr_fd(current_a->num, 1);
 			if (current_a->solved)
-				printf("\033[32;1m %d\033[0m", current_a->content);
+				printf("\033[32;1m %d\033[0m", current_a->num);
 			else
-				printf("\033[32;2m %d\033[0m", current_a->content);
+				printf("\033[32;2m %d\033[0m", current_a->num);
 			current_a = current_a->next;
 		}
 		printf("	");
@@ -83,7 +83,7 @@ void	print_lst(t_list **stack_a, t_list **stack_b)
 		if (current_b)
 		{
 			// ft_putnbr_fd(current_b->num, 1);
-			printf("%d", current_b->content);
+			printf("%d", current_b->num);
 			current_b = current_b->next;
 		}
 		printf("\n");

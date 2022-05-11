@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:25 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/05 15:12:21 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/10 14:16:17 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ t_list	*ft_lstlast_solved(t_list *lst);
 int		reverse_sorted(t_list **stack);
 int		check_solved(t_list **stack);
 int		check_one_solved(t_list **stack);
+void free_all(t_list **stack_a, t_list **stack_b);
 
 #endif
 
