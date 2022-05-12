@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:25 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/10 14:16:17 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/05/12 15:08:20 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,72 +33,69 @@ typedef struct s_place
 	t_list	*closest;
 }					t_place;
 
-int		push_swap(int ac, char **av);
+/* push_swap */
+int		main(int ac, char **av);
+int		set_up_list(int ac, char **av, t_list **stack_a, t_list **stack_b);
+void	free_all(t_list **stack_a, t_list **stack_b);
+int		ft_error(t_list **stack_a, t_list **stack_b);
+void	print_lst(t_list **stack_a, t_list **stack_b);
+
+/* moves_1 */
+void	sa(t_list **stack_a, char letter);
+void	sb(t_list **stack_b, char letter);
+void	pa(t_list **stack_a, t_list **stack_b);
+void	pb(t_list **stack_a, t_list **stack_b);
+
+/* moves_2 */
+void	ra(t_list **stack_a, char letter);
+void	rb(t_list **stack_b, char letter);
+void	rra(t_list **stack_a, char letter);
+void	rrb(t_list **stack_b, char letter);
+
+/* moves_3 */
+void	rr(t_list **stack_a, t_list **stack_b);
+void	ss(t_list **stack_a, t_list **stack_b);
+void	rrr(t_list **stack_a, t_list **stack_b);
+
+/* check */
 int		check_if_digit(int ac, char **av);
-int		ft_error(t_list **a);
+int		check_sorted(t_list **stack);
+int		check_dup(t_list **stack);
+t_list	*find_min(t_list **stack);
+
+/* setup */
+int		l_no_spc(char *str);
+int		c_to_i(char	*str, t_list **stack_a);
+int		set_up_av(int ac, char **av, t_list **stack_a, t_list **stack_b);
+
+/* sort */
 void	two_nbrs(t_list **stack_a);
 void	three_nbrs(t_list **stack_a);
 void	four_nbrs(t_list **stack_a, t_list **stack_b);
 void	five_nbrs(t_list **stack_a, t_list **stack_b);
-void	big_sort(t_list **stack_a, t_list **stack_b);
-void	check_last(t_list **last);
-void	sa(t_list **stack_a, char letter);
-void	sb(t_list **stack_b, char letter);
-void	ss(t_list **stack_a, t_list **stack_b);
-void	pa(t_list **stack_a, t_list **stack_b);
-void	pb(t_list **stack_a, t_list **stack_b);
-void	ra(t_list **stack_a, char letter);
-void	rb(t_list **stack_b, char letter);
-void	rr(t_list **stack_a, t_list **stack_b);
-void	rra(t_list **stack_a, char letter);
-void	rrb(t_list **stack_b, char letter);
-void	rrr(t_list **stack_a, t_list **stack_b);
-int		l_no_spc(char *str);
-int		c_to_i(char	*str, t_list **stack_a);
-void	set_up_str(t_list **stack_a, char **av);
-int		set_up_av(int ac, char **av, t_list **stack_a, t_list **stack_b);
-void	print_lst(t_list **stack_a, t_list **stack_b);
 void	choose_sort(t_list **stack_a, t_list **stack_b);
-void	set_previous(t_list **stack);
-t_list	*find_max(t_list **stack);
-t_list	*find_min(t_list **stack);
-int		check_sorted(t_list **stack);
-int		check_dup(t_list **stack);
-int		median(t_list **stack_a);
-void	jifas(t_list **stack_a, t_list **stack_b);
-void	init_place(t_list **stack_a, t_list **stack_b, t_place *plc);
-t_list	*compare(t_place *plc);
-void	tester(t_list **stack_a, t_list **stack_b);//a enlevé
-int		rotate_to(t_list **stack, t_list *ptr);
-t_list	*gimi_median(t_list **stack_a, int median);
-int		abs(int n);
+
+/* radix */
+void	radix(t_list **stack_a, t_list **stack_b);
 void	median_sort(int *array, int n);
 void	ft_range(t_list **stack_a);
 void	fill(t_list **stack, int *arr);
 void	rank(t_list **stack, int *arr);
+
+/* jifas */
+int		median(t_list **stack_a);
+void	jifas(t_list **stack_a, t_list **stack_b);
+t_list	*gimi_median(t_list **stack_a, int median);
+t_list	*find_max(t_list **stack);
+int		abs(int n);
 int		solver(t_list **stack_a, t_list **stack_b, t_place *plc);
 int		is_empty(t_list *list);
 t_list	*ft_lstlast_solved(t_list *lst);
 int		reverse_sorted(t_list **stack);
 int		check_solved(t_list **stack);
 int		check_one_solved(t_list **stack);
-void free_all(t_list **stack_a, t_list **stack_b);
+void	init_place(t_list **stack_a, t_list **stack_b, t_place *plc);
+t_list	*compare(t_place *plc);
+int		rotate_to(t_list **stack, t_list *ptr);
 
 #endif
-
-/* 
-regler le lst_clear
-(abomination rangement + longueur des fonctions)
-*/
-
-/*
-Algo des amis
--------------
-gerer la boucle while de l'algo jifas
-gerer le "sa" dans la boucle jifas
-tout l'algo omegalul
-créer le preneur de decision pour optiminiser (ra/rra) (gérer les rotations -> un certain pointeur)
-comparateur du nombre de move entre jifas et radix
-clean le .h
-enlever les printf(oui!même ceux en commantaire!)
-*/

@@ -15,7 +15,6 @@
 void	jifas(t_list **stack_a, t_list **stack_b)
 {
 	t_place	*plc;
-	int i=0;
 
 	plc = malloc(sizeof(t_place));
 	if (!plc)
@@ -66,6 +65,7 @@ void	jifas(t_list **stack_a, t_list **stack_b)
 				pa(stack_a, stack_b);
 		}
 		if (!is_empty(*stack_b))
+		{
 			if(!solver(stack_a, stack_b, plc))
 			{
 				rotate_to(stack_a, find_min(stack_a));
@@ -80,7 +80,7 @@ void	jifas(t_list **stack_a, t_list **stack_b)
 					rra(stack_a, 'a');
 				}	
 			}
-//		print_lst(stack_a, stack_b);
+		}
 	}
 	free(plc);
 }
@@ -213,4 +213,147 @@ int	check_one_solved(t_list **stack)
 		ptr1 = ptr1->next;
 	}
 	return (0);
+}
+
+static int	find_median(int array[], int n);
+static int	find_median_2(int array[], int n);
+
+static int	find_median_2(int array[], int n)
+{
+	int	median;
+
+	median = 0;
+	if (n % 2 == 0)
+		median = (array[(n - 1) / 2] + array[n / 2]) / 2.0;
+	else
+		median = array[n / 2];
+	return (median);
+}
+
+static int	find_median(int array[], int n)
+{
+	int	i;
+	int	median;
+
+	i = 0;
+	median = 0;
+	median_sort(array, n);
+	median = find_median_2(array, n);
+	return (median);
+}
+
+int	median(t_list **stack_a)
+{
+	int		n;
+	int		i;
+	int		*array;
+	t_list	*current;
+
+	i = 0;
+	n = ft_lstsize(*stack_a);
+	current = *stack_a;
+	array = malloc(sizeof(int) * n);
+	if (!array)
+		return (0);
+	while (current)
+	{
+		array[i] = current->content;
+		current = current->next;
+		++i;
+	}
+	i = find_median(array, n);
+	free(array);
+	return (i);
+}
+
+t_list	*gimi_median(t_list **stack_a, int median)
+{
+	t_list	*median_ptr;
+	t_list	*current;
+	int		diff;
+
+	current = *stack_a;
+	diff = MAX_INT;
+	while (current)
+	{
+		if (abs(current->content - median) < diff)
+		{
+			diff = abs(current->content - median);
+			median_ptr = current;
+		}
+		current = current->next;
+	}
+	return (median_ptr);
+}
+
+int	abs(int n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
+}
+
+void	init_place(t_list **stack_a, t_list **stack_b, t_place *plc)
+{
+	if (stack_a)
+	{
+		plc->top_a = *stack_a;
+		plc->bot_a = ft_lstlast_solved(*stack_a);
+	}
+	if (stack_b)
+	{
+		plc->top_b = *stack_b;
+		plc->bot_b = ft_lstlast(*stack_b);
+	}
+}
+
+t_list	*compare(t_place *plc)
+{
+	t_list	*closest;
+	int		diff;
+
+	diff = MAX_INT;
+	closest = NULL;
+	if (plc->top_a->content - plc->top_b->content > 0 && plc->top_a->content - plc->top_b->content < diff)
+	{
+		diff = plc->top_a->content - plc->top_b->content;
+		closest = plc->top_a;
+	}
+	if (plc->bot_a->content - plc->top_b->content > 0 && plc->bot_a->content - plc->top_b->content < diff)
+	{
+		diff = plc->bot_a->content - plc->top_b->content;
+		closest = plc->bot_a;
+	}
+	if (plc->bot_b->content - plc->top_a->content > 0 && plc->bot_b->content - plc->top_a->content < diff)
+	{
+		diff = plc->bot_b->content - plc->top_a->content;
+		closest = plc->top_a;
+	}
+	if (plc->bot_b->content - plc->bot_a->content > 0 && plc->bot_b->content - plc->bot_a->content < diff)
+	{
+		diff = plc->bot_b->content - plc->bot_a->content;
+		closest = plc->bot_a;
+	}
+	plc->closest = closest;
+	return (closest);
+}
+
+t_list	*find_max(t_list **stack)
+{
+	int		max;
+	t_list	*ptr_max;
+	t_list	*ptr;
+
+	max = MIN_INT;
+	ptr = *stack;
+	while (ptr)
+	{
+		if (ptr->content > max)
+		{
+			ptr_max = ptr;
+			max = ptr->content;
+		}
+		ptr = ptr->next;
+	}
+	return (ptr_max);
 }

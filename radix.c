@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 17:03:04 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/05/05 15:51:15 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/12 14:36:20 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	big_sort(t_list **stack_a, t_list **stack_b)
+void	radix(t_list **stack_a, t_list **stack_b)
 {
 	int		bit;
 	int		i;
@@ -35,6 +35,31 @@ void	big_sort(t_list **stack_a, t_list **stack_b)
 		while (*stack_b)
 			pa(stack_a, stack_b);
 		bit++;
+	}
+}
+
+void	median_sort(int *array, int n)
+{
+	int	i;
+	int	j;
+	int	temp;
+
+	i = 0;
+	temp = 0;
+	while (i < n)
+	{
+		j = 0;
+		while (j < n - 1)
+		{
+			if (array[j] > array[j + 1])
+			{
+				temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+			}
+			j++;
+		}
+		i++;
 	}
 }
 
