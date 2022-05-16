@@ -6,7 +6,7 @@
 /*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:25 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/12 15:08:20 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/05/16 13:19:51 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,6 @@
 
 # define MIN_INT -2147483648
 # define MAX_INT 2147483647
-
-typedef struct s_place
-{
-	t_list	*top_a;
-	t_list	*top_b;
-	t_list	*bot_a;
-	t_list	*bot_b;
-	t_list	*min_b;
-	t_list	*max_a;
-	t_list	*start;
-	int		median;
-	t_list	*closest;
-}					t_place;
 
 /* push_swap */
 int		main(int ac, char **av);
@@ -81,21 +68,5 @@ void	median_sort(int *array, int n);
 void	ft_range(t_list **stack_a);
 void	fill(t_list **stack, int *arr);
 void	rank(t_list **stack, int *arr);
-
-/* jifas */
-int		median(t_list **stack_a);
-void	jifas(t_list **stack_a, t_list **stack_b);
-t_list	*gimi_median(t_list **stack_a, int median);
-t_list	*find_max(t_list **stack);
-int		abs(int n);
-int		solver(t_list **stack_a, t_list **stack_b, t_place *plc);
-int		is_empty(t_list *list);
-t_list	*ft_lstlast_solved(t_list *lst);
-int		reverse_sorted(t_list **stack);
-int		check_solved(t_list **stack);
-int		check_one_solved(t_list **stack);
-void	init_place(t_list **stack_a, t_list **stack_b, t_place *plc);
-t_list	*compare(t_place *plc);
-int		rotate_to(t_list **stack, t_list *ptr);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:15:56 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/12 14:53:13 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/05/16 15:18:02 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ t_list	*find_min(t_list **stack)
 		return (NULL);
 	while (ptr)
 	{
-		if (ptr->content < min && ptr->solved == 0)
+		if (ptr->content < min)
 		{
 			ptr_min = ptr;
 			min = ptr->content;
