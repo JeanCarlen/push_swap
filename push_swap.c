@@ -90,7 +90,6 @@ int	main(int ac, char **av)
 	if (!set_up_list(ac, av, &stack_a, &stack_b))
 		return (0);
 	choose_sort(&stack_a, &stack_b);
-	print_lst(&stack_a, &stack_b);
 	free_all(&stack_a, &stack_b);
 	return (0);
 }
