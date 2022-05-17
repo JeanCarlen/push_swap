@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:18:38 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/05/12 14:48:34 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/05/17 14:58:11 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,16 @@ void	rra(t_list **stack_a, char letter)
 {
 	t_list	*head;
 	t_list	*last;
+	t_list	*current;
 
 	head = *stack_a;
+	current = *stack_a;
 	if ((*stack_a)->next == NULL)
 		return ;
 	last = ft_lstlast(*stack_a);
+	while(current->next != last)
+		current = current->next;
+	current->next = NULL;
 	*stack_a = last;
 	last->next = head;
 	if (letter == 'a')
