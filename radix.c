@@ -3,38 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 17:03:04 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/05/12 14:36:20 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/05/18 14:01:3 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-void	radix(t_list **stack_a, t_list **stack_b)
+void	radix(t_list **stack_a, t_list **stack_b, char tmp[4])
 {
 	int		bit;
 	int		i;
-	int		size;
+	int		size_a;
+	int		size_b;
 
 	bit = 0;
 	ft_range(stack_a);
-	size = ft_lstsize(*stack_a);
 	while (!check_sorted(stack_a))
 	{
 		i = 0;
-		while (i < size)
+		size_a = ft_lstsize(*stack_a);
+		while (i < size_a)
 		{
 			if ((((*stack_a)->content >> bit) & 1) == 1)
-				ra(stack_a, 'a');
+				ra(stack_a, stack_b, tmp);
 			else
-				pb(stack_a, stack_b);
+				pb(stack_a, stack_b, tmp);
 			++i;
 		}
-		while (*stack_b)
-			pa(stack_a, stack_b);
+		i = 0;
 		bit++;
+		size_b = ft_lstsize(*stack_b);
+		if (!check_sorted(stack_a) || !reverse_sorted(stack_b))
+			while (i < size_b)
+			{
+				if ((((*stack_b)->content >> bit) & 1) != 1)
+					rb(stack_a, stack_b, tmp);
+				else
+					pa(stack_a, stack_b, tmp);
+				++i;
+			}
+		else
+		{
+			while (*stack_b)
+				pa(stack_a, stack_b, tmp);
+			return ;
+		}
 	}
 }
 

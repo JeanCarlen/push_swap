@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:25 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/16 13:19:51 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/05/18 16:27:54 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,28 @@ int		ft_error(t_list **stack_a, t_list **stack_b);
 void	print_lst(t_list **stack_a, t_list **stack_b);
 
 /* moves_1 */
-void	sa(t_list **stack_a, char letter);
-void	sb(t_list **stack_b, char letter);
-void	pa(t_list **stack_a, t_list **stack_b);
-void	pb(t_list **stack_a, t_list **stack_b);
+void	sa(t_list **stack_a, char letter,  char tmp[4]);
+void	sb(t_list **stack_b, char letter,  char tmp[4]);
+void	pa(t_list **stack_a, t_list **stack_b, char tmp[4]);
+void	pb(t_list **stack_a, t_list **stack_b,  char tmp[4]);
 
 /* moves_2 */
-void	ra(t_list **stack_a, char letter);
-void	rb(t_list **stack_b, char letter);
-void	rra(t_list **stack_a, char letter);
-void	rrb(t_list **stack_b, char letter);
+void	ra(t_list **stack_a, t_list **stack_b, char tmp[4]);
+void	rb(t_list **stack_a, t_list **stack_b, char tmp[4]);
+void	rra(t_list **stack_a, char letter, char tmp[4]);
+void	rrb(t_list **stack_b, char letter, char tmp[4]);
 
 /* moves_3 */
-void	rr(t_list **stack_a, t_list **stack_b);
-void	ss(t_list **stack_a, t_list **stack_b);
-void	rrr(t_list **stack_a, t_list **stack_b);
+void	rr(t_list **stack_a, t_list **stack_b, char tmp[4]);
+void	ss(t_list **stack_a, t_list **stack_b, char tmp[4]);
+void	rrr(t_list **stack_a, t_list **stack_b, char tmp[4]);
 
 /* check */
 int		check_if_digit(int ac, char **av);
 int		check_sorted(t_list **stack);
 int		check_dup(t_list **stack);
 t_list	*find_min(t_list **stack);
+int		reverse_sorted(t_list **stack);
 
 /* setup */
 int		l_no_spc(char *str);
@@ -56,14 +57,14 @@ int		c_to_i(char	*str, t_list **stack_a);
 int		set_up_av(int ac, char **av, t_list **stack_a, t_list **stack_b);
 
 /* sort */
-void	two_nbrs(t_list **stack_a);
-void	three_nbrs(t_list **stack_a);
-void	four_nbrs(t_list **stack_a, t_list **stack_b);
-void	five_nbrs(t_list **stack_a, t_list **stack_b);
-void	choose_sort(t_list **stack_a, t_list **stack_b);
+void	two_nbrs(t_list **stack_a, char tmp[4]);
+void	three_nbrs(t_list **stack_a, t_list **stack_b, char tmp[4]);
+void	four_nbrs(t_list **stack_a, t_list **stack_b, char tmp [4]);
+void	five_nbrs(t_list **stack_a, t_list **stack_b, char tmp[4]);
+void	choose_sort(t_list **stack_a, t_list **stack_b, char tmp[4]);
 
 /* radix */
-void	radix(t_list **stack_a, t_list **stack_b);
+void	radix(t_list **stack_a, t_list **stack_b, char tmp[4]);
 void	median_sort(int *array, int n);
 void	ft_range(t_list **stack_a);
 void	fill(t_list **stack, int *arr);

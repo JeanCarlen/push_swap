@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   moves_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:16:25 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/05/12 14:48:46 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/05/18 15:49:058 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_list **stack_a, char letter)
+void	sa(t_list **stack_a, char letter, char tmp[4])
 {
 	t_list	*new_head;
 	t_list	*second_node;
@@ -23,17 +23,27 @@ void	sa(t_list **stack_a, char letter)
 	new_head->next = second_node;
 	*stack_a = new_head;
 	if (letter == 'a')
-		ft_putstr_fd("sa\n", 1);
+	{
+		ft_putstr_fd(tmp, 1);
+		if (*tmp)
+			write(1, "\n", 1);
+		ft_strlcpy(tmp, "sa", 3);
+	}
 	else
-		ft_putstr_fd("sb\n", 1);
+	{
+		ft_putstr_fd(tmp, 1);
+		if (*tmp)
+			write(1, "\n", 1);
+		ft_strlcpy(tmp, "sb", 3);
+	}
 }
 
-void	sb(t_list **stack_b, char letter)
+void	sb(t_list **stack_b, char letter, char tmp[4])
 {
-	sa(stack_b, letter);
+	sa(stack_b, letter, tmp);
 }
 
-void	pa(t_list **stack_a, t_list **stack_b)
+void	pa(t_list **stack_a, t_list **stack_b, char tmp[4])
 {
 	t_list	*temp_b;
 	t_list	*temp_a;
@@ -45,10 +55,18 @@ void	pa(t_list **stack_a, t_list **stack_b)
 	*stack_b = temp_b->next;
 	temp_b->next = *stack_a;
 	*stack_a = temp_b;
-	ft_putstr_fd("pa\n", 1);
+	if (ft_strncmp(tmp, "pb", 3))
+	{
+		ft_putstr_fd(tmp, 1);
+		if (*tmp)
+			write(1, "\n", 1);
+		ft_strlcpy(tmp, "pa", 3);
+	}
+	else
+		ft_bzero(tmp, 3);
 }
 
-void	pb(t_list **stack_a, t_list **stack_b)
+void	pb(t_list **stack_a, t_list **stack_b, char	tmp[4])
 {
 	t_list	*temp_b;
 	t_list	*temp_a;
@@ -60,5 +78,13 @@ void	pb(t_list **stack_a, t_list **stack_b)
 	*stack_a = temp_a->next;
 	temp_a->next = *stack_b;
 	*stack_b = temp_a;
-	ft_putstr_fd("pb\n", 1);
+	if (ft_strncmp(tmp, "pa", 3))
+	{
+		ft_putstr_fd(tmp, 1);
+		if (*tmp)
+			write(1, "\n", 1);
+		ft_strlcpy(tmp, "pb", 3);
+	}
+	else
+		ft_bzero(tmp, 3);
 }

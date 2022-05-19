@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:16 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/17 14:58:13 by fmalizia         ###   ########.ch       */
+/*   Updated: 2022/05/18 16:40:30 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ int	set_up_list(int ac, char **av, t_list **stack_a, t_list **stack_b)
 			write(1, "digit ", 6);
 			return (ft_error(stack_a, NULL));
 		}
-		set_up_av(ac, av, stack_a, stack_b);
+		if (!set_up_av(ac, av, stack_a, stack_b))
+			return (0);
 	}
 	if (ac == 2)
 		if (!c_to_i(av[1], stack_a))
@@ -84,12 +85,16 @@ int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	char	tmp[4];
 
 	stack_a = NULL;
 	stack_b = NULL;
+	ft_bzero(tmp, 4);
 	if (!set_up_list(ac, av, &stack_a, &stack_b))
 		return (0);
-	choose_sort(&stack_a, &stack_b);
+	choose_sort(&stack_a, &stack_b, tmp);
+	ft_putstr_fd(tmp, 1);
+	write(1, "\n", 1);
 	free_all(&stack_a, &stack_b);
 	return (0);
 }

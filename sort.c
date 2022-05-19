@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:21:26 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/12 15:07:42 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/05/18 15:008:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	two_nbrs(t_list **stack_a)
+void	two_nbrs(t_list **stack_a, char tmp[4])
 {
 	t_list	*temp;
 	int		a;
@@ -22,10 +22,10 @@ void	two_nbrs(t_list **stack_a)
 	a = (int)temp->content;
 	b = (int)temp->next->content;
 	if (a > b)
-		sa(stack_a, 'a');
+		sa(stack_a, 'a', tmp);
 }
 
-void	three_nbrs(t_list **stack_a)
+void	three_nbrs(t_list **stack_a, t_list **stack_b, char tmp[4])
 {
 	t_list	*temp;
 	int		a;
@@ -37,21 +37,21 @@ void	three_nbrs(t_list **stack_a)
 	b = (int)temp->next->content;
 	c = (int)temp->next->next->content;
 	if (a < b && b > c)
-		rra(stack_a, 'a');
+		rra(stack_a, 'a', tmp);
 	if (a < b && b > c && c > a)
-		sa(stack_a, 'a');
+		sa(stack_a, 'a', tmp);
 	if (a > b && b < c && a > c)
-		ra(stack_a, 'a');
+		ra(stack_a, stack_b, tmp);
 	if (a > b && b > c)
 	{
-		ra(stack_a, 'a');
-		sa(stack_a, 'a');
+		ra(stack_a, stack_b, tmp);
+		sa(stack_a, 'a', tmp);
 	}
 	if (a > b && b < c && a < c)
-		sa(stack_a, 'a');
+		sa(stack_a, 'a', tmp);
 }
 
-void	four_nbrs(t_list **stack_a, t_list **stack_b)
+void	four_nbrs(t_list **stack_a, t_list **stack_b, char tmp[4])
 {
 	t_list	*ptr_min;
 
@@ -59,13 +59,13 @@ void	four_nbrs(t_list **stack_a, t_list **stack_b)
 	if (check_sorted(stack_a))
 		return ;
 	while (*stack_a != ptr_min)
-		ra(stack_a, 'a');
-	pb(stack_a, stack_b);
-	three_nbrs(stack_a);
-	pa(stack_a, stack_b);
+		ra(stack_a, stack_b, tmp);
+	pb(stack_a, stack_b, tmp);
+	three_nbrs(stack_a, stack_b, tmp);
+	pa(stack_a, stack_b, tmp);
 }
 
-void	five_nbrs(t_list **stack_a, t_list **stack_b)
+void	five_nbrs(t_list **stack_a, t_list **stack_b, char tmp[4])
 {
 	t_list	*ptr_min;
 	t_list	*current;
@@ -84,28 +84,28 @@ void	five_nbrs(t_list **stack_a, t_list **stack_b)
 	while (*stack_a != ptr_min)
 	{
 		if (i < 3)
-			ra(stack_a, 'a');
+			ra(stack_a, stack_b, tmp);
 		else
-			rra(stack_a, 'a');
+			rra(stack_a, 'a', tmp);
 	}
-	pb(stack_a, stack_b);
-	four_nbrs(stack_a, stack_b);
-	pa(stack_a, stack_b);
+	pb(stack_a, stack_b, tmp);
+	four_nbrs(stack_a, stack_b, tmp);
+	pa(stack_a, stack_b, tmp);
 }
 
-void	choose_sort(t_list **stack_a, t_list **stack_b)
+void	choose_sort(t_list **stack_a, t_list **stack_b, char tmp[4])
 {
 	int	size;
 
 	size = ft_lstsize(*stack_a);
 	if (size == 2)
-		two_nbrs(stack_a);
+		two_nbrs(stack_a, tmp);
 	if (size == 3)
-		three_nbrs(stack_a);
+		three_nbrs(stack_a, stack_b, tmp);
 	if (size == 4)
-		four_nbrs(stack_a, stack_b);
+		four_nbrs(stack_a, stack_b, tmp);
 	if (size == 5)
-		five_nbrs(stack_a, stack_b);
+		five_nbrs(stack_a, stack_b, tmp);
 	if (size > 5)
-		radix(stack_a, stack_b);
+		radix(stack_a, stack_b, tmp);
 }

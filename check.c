@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:15:56 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/16 15:18:02 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/05/19 12:21:30 by jeancarlen       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,23 @@ t_list	*find_min(t_list **stack)
 		ptr = ptr->next;
 	}
 	return (ptr_min);
+}
+
+int	reverse_sorted(t_list **stack)
+{
+	t_list	*ptr1;
+	t_list	*ptr2;
+
+	if (!*stack)
+		return (0);
+	ptr1 = *stack;
+	ptr2 = ptr1->next;
+	while (ptr2)
+	{
+		if (ptr1->content < ptr2->content)
+			return (0);
+		ptr1 = ptr1->next;
+		ptr2 = ptr1->next;
+	}
+	return (1);
 }
