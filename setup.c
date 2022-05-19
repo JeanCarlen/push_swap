@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:17:35 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/18 13:42:193 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/05/19 16:39:28 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	c_to_i(char	*str, t_list **stack_a)
 	if (check_if_digit(size + 1, nbr) == 0)
 	{
 		write(1, "digit ", 6);
-		return (ft_error(stack_a, NULL));
+		return (ft_error(stack_a));
 	}
 	while (nbr[++i])
 	{
@@ -53,7 +53,7 @@ int	c_to_i(char	*str, t_list **stack_a)
 		if (n > MAX_INT)
 		{
 			write(1, "over max int ", 13);
-			return (ft_error(stack_a, NULL));
+			return (ft_error(stack_a));
 		}
 		ft_lstadd_back(stack_a, ft_lstnew(n));
 		free(nbr[i]);
@@ -61,10 +61,9 @@ int	c_to_i(char	*str, t_list **stack_a)
 	return (1);
 }
 
-int	set_up_av(int ac, char **av, t_list **stack_a, t_list **stack_b)
+int	set_up_av(char **av, t_list **stack_a)
 {
 	int		i;
-	int		size;
 	long	nbr;
 
 	i = 1;
@@ -74,7 +73,7 @@ int	set_up_av(int ac, char **av, t_list **stack_a, t_list **stack_b)
 		if (nbr > MAX_INT)
 		{
 			write(1, "over max int ", 13);
-			return (ft_error(stack_a, NULL));
+			return (ft_error(stack_a));
 		}
 		ft_lstadd_back(stack_a, ft_lstnew(nbr));
 		++i;

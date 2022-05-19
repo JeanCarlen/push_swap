@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:18:38 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/05/18 100:00:07 by marvin           ###   ########.fr       */
+/*   Updated: 2022/05/19 16:37:07 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ra(t_list **stack_a, t_list **stack_b, char tmp[4])
 	t_list	*last;
 	t_list	*second;
 
+	(void)stack_b;
 	if (!*stack_a)
 		return ;
 	if (!(*stack_a)->next)
@@ -29,14 +30,12 @@ void	ra(t_list **stack_a, t_list **stack_b, char tmp[4])
 	temp->next = NULL;
 	*stack_a = second;
 	if (!ft_strncmp(tmp, "rb", 3))
-	{
 		ft_strlcpy(tmp, "rr", 3);
-	}
 	else
 	{
 		ft_putstr_fd(tmp, 1);
 		if (*tmp)
-		write(1, "\n", 1);
+			write(1, "\n", 1);
 		ft_strlcpy(tmp, "ra", 3);
 	}
 }
@@ -47,6 +46,7 @@ void	rb(t_list **stack_a, t_list **stack_b, char tmp[4])
 	t_list	*last;
 	t_list	*second;
 
+	(void)stack_a;
 	if (!*stack_b)
 		return ;
 	if (!(*stack_b)->next)
@@ -79,11 +79,16 @@ void	rra(t_list **stack_a, char letter, char tmp[4])
 	if ((*stack_a)->next == NULL)
 		return ;
 	last = ft_lstlast(*stack_a);
-	while(current->next != last)
+	while (current->next != last)
 		current = current->next;
 	current->next = NULL;
 	*stack_a = last;
 	last->next = head;
+	rra_1(letter, tmp);
+}
+
+void	rra_1(char letter, char tmp[4])
+{
 	if (letter == 'a')
 	{
 		ft_putstr_fd(tmp, 1);

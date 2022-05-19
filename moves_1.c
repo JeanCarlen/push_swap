@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:16:25 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/05/18 15:49:058 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/05/19 15:51:28 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	pa(t_list **stack_a, t_list **stack_b, char tmp[4])
 		ft_bzero(tmp, 3);
 }
 
-void	pb(t_list **stack_a, t_list **stack_b, char	tmp[4])
+void	pb(t_list **stack_a, t_list **stack_b, char tmp[4])
 {
 	t_list	*temp_b;
 	t_list	*temp_a;

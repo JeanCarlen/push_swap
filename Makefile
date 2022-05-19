@@ -12,7 +12,7 @@
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra 
+CFLAGS = -Wall -Werror -Wextra
 
 NAME =	push_swap
 
@@ -24,6 +24,7 @@ SRCS =	push_swap.c\
 		setup.c \
 		sort.c \
 		radix.c \
+		radix_utils.c \
 
 INCLUDES = push_swap.h
 
@@ -55,7 +56,7 @@ libft:
 		@ printf "$(CY)******************\n# LIBFT COMPILED #\n******************\n$(RC)"
 
 %.o : %.c
-		@$(CC) $(FLAGS) $< -c
+		@$(CC) $(CFLAGS) $< -c
 		@printf "$(GR)||"
 
 clean :

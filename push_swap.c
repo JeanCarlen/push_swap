@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:16 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/18 16:40:30 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/05/19 16:45:57 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_all(t_list **stack_a, t_list **stack_b)
+void	free_all(t_list **stack_a)
 {
 	t_list	*current;
 	t_list	*next;
@@ -27,9 +27,9 @@ void	free_all(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-int	ft_error(t_list **stack_a, t_list **stack_b)
+int	ft_error(t_list **stack_a)
 {
-	free_all(stack_a, stack_b);
+	free_all(stack_a);
 	write(2, "Error\n", 7);
 	return (0);
 }
@@ -58,16 +58,16 @@ void	print_lst(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-int	set_up_list(int ac, char **av, t_list **stack_a, t_list **stack_b)
+int	set_up_list(int ac, char **av, t_list **stack_a)
 {
 	if (ac >= 3)
 	{
 		if (!check_if_digit(ac, &av[1]))
 		{
 			write(1, "digit ", 6);
-			return (ft_error(stack_a, NULL));
+			return (ft_error(stack_a));
 		}
-		if (!set_up_av(ac, av, stack_a, stack_b))
+		if (!set_up_av(av, stack_a))
 			return (0);
 	}
 	if (ac == 2)
@@ -76,7 +76,7 @@ int	set_up_list(int ac, char **av, t_list **stack_a, t_list **stack_b)
 	if (!check_dup(stack_a))
 	{
 		write(1, "dup ", 4);
-		return (ft_error(stack_a, NULL));
+		return (ft_error(stack_a));
 	}
 	return (1);
 }
@@ -90,11 +90,11 @@ int	main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	ft_bzero(tmp, 4);
-	if (!set_up_list(ac, av, &stack_a, &stack_b))
+	if (!set_up_list(ac, av, &stack_a))
 		return (0);
 	choose_sort(&stack_a, &stack_b, tmp);
 	ft_putstr_fd(tmp, 1);
 	write(1, "\n", 1);
-	free_all(&stack_a, &stack_b);
+	free_all(&stack_a);
 	return (0);
 }
