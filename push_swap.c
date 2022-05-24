@@ -6,11 +6,13 @@
 /*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:16 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/19 16:45:57 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/05/24 15:18:38 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	check_leaks(void);
 
 void	free_all(t_list **stack_a)
 {
@@ -96,5 +98,6 @@ int	main(int ac, char **av)
 	ft_putstr_fd(tmp, 1);
 	write(1, "\n", 1);
 	free_all(&stack_a);
+	check_leaks();
 	return (0);
 }

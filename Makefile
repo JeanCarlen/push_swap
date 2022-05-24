@@ -25,6 +25,8 @@ SRCS =	push_swap.c\
 		sort.c \
 		radix.c \
 		radix_utils.c \
+		leacks_cheker_ex.c \
+
 
 INCLUDES = push_swap.h
 
@@ -36,6 +38,8 @@ GR = \033[32;1m
 CY = \033[36;1m
 RC = \033[0m
 
+TEST = 12 16 45 2 54
+
 all : $(NAME)
 
 $(NAME) : libft start $(OBJS)
@@ -46,10 +50,9 @@ $(NAME) : libft start $(OBJS)
 start:
 		@printf "$(GR)Compiling Push_Swap\n"
 
-random: libft 
-		gcc numb_gen.c -L$(LIBFT) -lft -o random
-		@echo $(ARG)
-		@echo $(PARAM)
+random: 
+		@gcc numb_gen.c -o numb_gen
+		./push_swap $(shell ./numb_gen 200) | ./checker_Mac $(shell ./numb_gen 200)
 
 libft:
 		@ $(MAKE) bonus -C $(LIBFT)
@@ -64,6 +67,7 @@ clean :
 		@ printf "$(CY)******************\n# OBJECT DELETED #\n******************\n$(RC)"
 fclean : clean
 		@ rm -f $(NAME)
+		@ rm -f numb_gen
 		@ printf "$(CY)******************\n# BINARY DELETED #\n******************\n$(RC)"
 reset: fclean 
 		@ $(MAKE) fclean -C $(LIBFT)
