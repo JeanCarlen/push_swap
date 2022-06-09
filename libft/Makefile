@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+         #
+#    By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/01 13:52:25 by jcarlen           #+#    #+#              #
-#    Updated: 2022/05/18 16:33:35 by jeancarlen       ###   ########.fr        #
+#    Updated: 2022/06/09 11:16:17 by jcarlen          ###   ########.ch        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CFLAGS = -Wall -Werror -Wextra -w
+CFLAGS = -Wall -Werror -Wextra
 
 GR = \033[32;1m
 CY = \033[36;1m
@@ -65,7 +65,7 @@ $(NAME): $(OBJS)
 		@ar rcs $(NAME) $(OBJS)
 
 %.o : %.c
-		@$(CC) $(FLAGS) $< -c
+		@$(CC) $(CFLAGS) $< -c
 		@printf "$(GR)||"
 
 all: $(NAME)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeancarlen <jeancarlen@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 10:42:34 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/18 13:45:32 by jeancarlen       ###   ########.fr       */
+/*   Updated: 2022/06/09 11:04:58 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 long			ft_atol(const char *str);
 
-static int	ft_strlen_nbr(const char *str);
+static int		ft_strlen_nbr(const char *str);
 
 long	ft_atol(const char *str)
 {
