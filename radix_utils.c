@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radix_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 17:03:04 by fmalizia          #+#    #+#             */
-/*   Updated: 2022/05/19 16:11:15 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/06/13 12:57:47 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,14 @@ void	fill(t_list **stack, int *arr)
 void	rank(t_list **stack, int *arr)
 {
 	int		i;
+	int 	finish;
 	t_list	*current;
 	t_list	*start;
 
 	i = 0;
+	finish = ft_lstsize(*stack);
 	start = *stack;
-	while (arr[i])
+	while (i < finish)
 	{
 		current = start;
 		while (current)

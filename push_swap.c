@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:33:16 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/06/09 11:02:49 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/06/13 13:24:24 by fmalizia         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	print_lst(t_list **stack_a, t_list **stack_b)
 	{	
 		if (current_a)
 		{
+			ft_putnbr_fd(current_a->content, 1);
+			write(1, "	", 1);
 			ft_putnbr_fd(current_a->num, 1);
 			current_a = current_a->next;
 		}
@@ -90,11 +92,16 @@ int	main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	ft_bzero(tmp, 4);
+	if (ac == 1 || av[1][0] == 0)
+		return (0);
 	if (!set_up_list(ac, av, &stack_a))
 		return (0);
 	choose_sort(&stack_a, &stack_b, tmp);
-	ft_putstr_fd(tmp, 1);
-	write(1, "\n", 1);
+	if (*tmp)
+	{
+		ft_putstr_fd(tmp, 1);
+		write(1, "\n", 1);
+	}
 	free_all(&stack_a);
 	return (0);
 }

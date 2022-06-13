@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fmalizia <fmalizia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 14:17:35 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/24 15:14:03 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/06/09 13:35:04 by fmalizia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int	c_to_i(char	*str, t_list **stack_a)
 	while (nbr[++i])
 	{
 		n = ft_atol(nbr[i]);
-		if (n > MAX_INT)
+		if (n > MAX_INT || n < MIN_INT || ft_strlen(nbr[i]) >= 19)
 		{
-			write(1, "over max int ", 13);
+			write(1, "over max/min int ", 17);
 			return (ft_error(stack_a));
 		}
 		ft_lstadd_back(stack_a, ft_lstnew(n));
@@ -69,9 +69,9 @@ int	set_up_av(char **av, t_list **stack_a)
 	while (av[i])
 	{
 		nbr = ft_atol(av[i]);
-		if (nbr > MAX_INT)
+		if (nbr > MAX_INT || nbr < MIN_INT || ft_strlen(av[i]) >= 19)
 		{
-			write(1, "over max int ", 13);
+			write(1, "over max/min int ", 17);
 			return (ft_error(stack_a));
 		}
 		ft_lstadd_back(stack_a, ft_lstnew(nbr));
