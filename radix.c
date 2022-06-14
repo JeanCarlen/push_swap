@@ -6,7 +6,7 @@
 /*   By: jcarlen <jcarlen@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 16:09:37 by jcarlen           #+#    #+#             */
-/*   Updated: 2022/05/19 16:41:54 by jcarlen          ###   ########.ch       */
+/*   Updated: 2022/06/14 13:56:28 by jcarlen          ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,8 @@ void	radix(t_list **stack_a, t_list **stack_b, char tmp[4])
 		if (!check_sorted(stack_a) || !reverse_sorted(stack_b))
 			radix_2(stack_a, stack_b, tmp, bit);
 		else
-		{
 			while (*stack_b)
 				pa(stack_a, stack_b, tmp);
-			return ;
-		}
 	}
 }
 
